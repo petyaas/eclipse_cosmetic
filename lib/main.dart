@@ -1,4 +1,6 @@
-import 'package:eclipse_cosmetic/pages/recoverpass.dart';
+
+
+import 'package:eclipse_cosmetic/pages/dialog_page.dart';
 
 import './pages/login.dart';
 import 'package:flutter/material.dart';
@@ -41,11 +43,11 @@ class MyHomePage extends StatelessWidget {
                   }
               ),
               RaisedButton(
-                  child: Text('Восстановление пароля'),
+                  child: Text('Диалоговое окно'),
                   onPressed: (){
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Recoverpass()),
+                     MaterialPageRoute(builder: (context) => Dialog_widget()),
                     );
                   }
               ),
