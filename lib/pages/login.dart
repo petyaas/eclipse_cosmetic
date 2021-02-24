@@ -28,7 +28,7 @@ class Loginpage1 extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Text('Вход в систему ART-VISAGE',
-                style: TextStyle(fontSize: 24),),
+                style: TextStyle(fontSize: 24,fontFamily: 'Roboto'),),
               ),
             ),
             Padding(
@@ -96,9 +96,9 @@ class Loginpage1 extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: FlatButton(
 //                color: Colors.white,
-                child: Text("Забыли пароль?",
+                child: Text("Забыли пароль?".toUpperCase(),
                   textAlign: TextAlign.left,
-                  style: TextStyle(color: Colors.indigo),
+                  style: TextStyle(color: Colors.indigo, fontSize: 14,fontFamily: 'Roboto'),
                 ),
                 onPressed: () {},
               ),
@@ -122,8 +122,8 @@ class Loginpage1 extends StatelessWidget {
                 child: FlatButton(
 //                color: Colors.white,
                   child: Text(
-                    "Регистрация",
-                    style: TextStyle(color: Colors.indigo),
+                    "Регистрация".toUpperCase(),
+                    style: TextStyle(color: Colors.indigo, fontSize: 16,fontFamily: 'Roboto'),
                   ),
                   onPressed: () {},
                 ),
