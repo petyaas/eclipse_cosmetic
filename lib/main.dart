@@ -1,3 +1,5 @@
+import 'package:eclipse_cosmetic/pages/recoverpass.dart';
+
 import './pages/login.dart';
 import 'package:flutter/material.dart';
 
@@ -30,14 +32,23 @@ class MyHomePage extends StatelessWidget {
           padding: EdgeInsets.all(8),
             children: <Widget>[
               RaisedButton(
-                child: Text('Login'),
+                  child: Text('Login'),
                   onPressed: (){
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Login()),
                     );
                   }
-                  ),
+              ),
+              RaisedButton(
+                  child: Text('Восстановление пароля'),
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Recoverpass()),
+                    );
+                  }
+              ),
             ],
         ),
     );
