@@ -1,3 +1,4 @@
+import 'package:eclipse_cosmetic/widgets/input_text.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter/services.dart';
 import 'package:eclipse_cosmetic/services/emailcheck.dart';
@@ -14,7 +15,15 @@ class Login extends StatelessWidget {
   }
 }
 
-class Loginpage1 extends StatelessWidget {
+class Loginpage1 extends StatefulWidget {
+  @override
+  _Loginpage1State createState() => _Loginpage1State();
+}
+
+class _Loginpage1State extends State<Loginpage1> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  bool _obscurePassword = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,63 +42,28 @@ class Loginpage1 extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-//                  obscureText: true,
-                textAlign: TextAlign.start,
-                keyboardType: TextInputType.name,
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                  hintStyle: TextStyle(color: Color(0X99000000)),
-                  border: OutlineInputBorder(
-                    gapPadding: 30,
-                    //                  borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Colors.grey, width: 5.0),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    //                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                  errorBorder: OutlineInputBorder(
-//                      borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                  errorText: context.watch<Logstat>().geterorruser(),
-                ),
-                textInputAction: TextInputAction.next,
-//      onSaved: emailvalue=>context.watch<Emailcheck>().get
-//              focusNode: _tokenFocusNode,
-                onChanged: (value){
-                  context.read<Logstat>().changelogin(value);
-                },
-              ),
+              child: InputText(
+                hint: 'Email',
+                controller: _emailController,
+              )
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                obscureText: true,
-                textAlign: TextAlign.start,
-                keyboardType: TextInputType.name,
-                decoration: InputDecoration(
-                  hintText: 'Enter your password',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  border: OutlineInputBorder(
-                    gapPadding: 30,
-                    borderSide: BorderSide(color: Colors.grey, width: 5.0),
+              child: InputText(
+                hint: 'Password',
+                controller: _passwordController,
+                obscure: _obscurePassword,
+                actionWidget: IconButton(
+                  icon: Icon(_obscurePassword
+                    ?Icons.remove_red_eye
+                    :Icons.remove_red_eye_outlined
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                  errorText: context.watch<Logstat>().geterorrpass(),
+                  onPressed: (){
+                    setState(() {
+                      _obscurePassword=!_obscurePassword;
+                    });
+                  },
                 ),
-                textInputAction: TextInputAction.next,
-                onSaved: (value) {
-                },
-                onChanged: (String value) {
-                  context.read<Logstat>().changpass(value);
-                },
               ),
             ),
             Padding(
