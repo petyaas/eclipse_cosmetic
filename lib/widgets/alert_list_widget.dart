@@ -1,73 +1,61 @@
 import 'package:flutter/material.dart';
 
 
-class Alert_list_widget extends StatefulWidget {
-  final Widget listwidget;
-  final Function on_accept;
-  final String on_accept_text;
-  final Function on_deny;
-  final String on_deny_text;
-
-  Alert_list_widget({
+class ListAlertDialog extends StatelessWidget {
+  const ListAlertDialog({
     Key key,
-    this.listwidget,
-    this.on_accept,
-    this.on_accept_text,
-    this.on_deny,
-    this.on_deny_text,
+    @required this.itemtext,
+    @required this.itembool,
+    @required this.onacceptclick,
+    @required this.ondenyclick,
+    @required this.titlofalert,
   }) : super(key: key);
-
-  @override
-  _Alert_list_widgetState createState() => _Alert_list_widgetState();
-}
-
-class _Alert_list_widgetState extends State<Alert_list_widget> {
-
+  final String titlofalert;
+  final List<String> itemtext;
+  final List<bool> itembool;
+  final Function onacceptclick;
+  final Function ondenyclick;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Container(
-      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-      child: Card(
-          child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Container(
-              height: MediaQuery.of(context).size.height - 200,
-               child: widget.listwidget,
+    return StatefulBuilder(
+      builder: (context, setState) {
+        return AlertDialog(
+          title: Text(titlofalert),
+          content:
+          Container(
+            height: 800,
+            width: 400,
+            child: ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: itemtext.length,
+                itemBuilder: (_, int index) {
+                  return ListTile(
+                    leading: Checkbox(
+                        value: itembool[index],
+                        onChanged:
+                            (value) {
+                          setState(() {
+                            itembool[index] = value;
+                          });
+                        }
+                        ),
+                    title: Text(itemtext[index]),
+                  );
+                }),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              onPressed: onacceptclick,
+              child: Text("Отменить"),
             ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: FlatButton(
-                      child: Text(
-                        widget.on_accept_text,
-                        style:
-                            TextStyle(color: Color(0xFF6200EE), fontSize: 14),
-                      ),
-                      onPressed: widget.on_accept),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: FlatButton(
-                      child: Text(
-                        widget.on_deny_text,
-                        style:
-                            TextStyle(color: Color(0xFF6200EE), fontSize: 14),
-                      ),
-                      onPressed: widget.on_deny),
-                ),
-              ],
-            )
+            FlatButton(
+              onPressed:ondenyclick,
+              child: Text("Сохранить"),
+            ),
           ],
-        ),
-      )),
-    ));
+        );
+      },
+    );
   }
 }

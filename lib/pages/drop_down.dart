@@ -7,10 +7,10 @@ class Drop_daon_page extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
           body: Center(
-            child:Drop_down_widget(
+            child:DropDownWidget(
               hint: 'Исполнитель',
               items: ["jhasjkdas","ashdjkashj","asjhdash"],
-              onchangeitem: (String chengeditem){
+              onChangeitem: (String chengeditem){
                 print(chengeditem);
               },
             ),

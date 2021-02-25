@@ -1,7 +1,4 @@
-
 import 'package:flutter/material.dart';
-
-
 class InputText extends StatelessWidget {
   final String hint;
   //final String errortext;

@@ -1,6 +1,5 @@
 import 'package:eclipse_cosmetic/widgets/input_text.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
 import 'package:eclipse_cosmetic/services/emailcheck.dart';
 import 'package:provider/provider.dart';
 
