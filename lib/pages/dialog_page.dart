@@ -71,8 +71,6 @@ class _Dialog_widgetState extends State<Dialog_widget> {
                         setState(() {
 
                         });
-
-
 //                       Navigator.pop(context);
                       },
                       on_deny_text: 'no',

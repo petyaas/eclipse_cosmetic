@@ -31,6 +31,7 @@ dependencies:
   email_validator: ^1.0.6
   expandable: ^4.1.4
   provider: ^4.3.3
+  dropdown_search: ^0.4.9
 
 dev_dependencies:
   flutter_test:

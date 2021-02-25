@@ -1,6 +1,7 @@
 
 
 import 'package:eclipse_cosmetic/pages/dialog_page.dart';
+import 'package:eclipse_cosmetic/pages/drop_dawn.dart';
 
 import './pages/login.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,15 @@ class MyHomePage extends StatelessWidget {
                     Navigator.push(
                       context,
                      MaterialPageRoute(builder: (context) => Dialog_widget()),
+                    );
+                  }
+              ),
+              RaisedButton(
+                  child: Text('Диалоговое окно'),
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Drop_daon_page()),
                     );
                   }
               ),
