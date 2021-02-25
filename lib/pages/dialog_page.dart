@@ -39,33 +39,41 @@ class _Dialog_widgetState extends State<Dialog_widget> {
             RaisedButton(
                 child: Text('Диалоговое окно'),
                 onPressed: () {
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
-                  listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
 
                   showDialog(
                     context: context,
-                    builder: (context) =>Alert_list_widget(
-                      list: listofbase,
+                    builder: (context) =>
+                        Alert_list_widget(
+                      listwidget:  ListView.builder(
+                          itemCount: listofbase.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return ListTile(
+                              leading: Checkbox(
+                                value: listofbase[index].plancheck,
+                                onChanged: (value){
+                                  listofbase[index].plancheck=value;
+                                  setState(() {
+                                  });
+                                },
+                              ),
+                              title: Container(
+                                child: Text(listofbase[index].plantext),
+                              ),
+                            );
+                          }
+                          ),
                       on_accept: (){
                         Navigator.pop(context);
                       },
                       on_accept_text: 'ok',
                       on_deny: (){
-                        Navigator.pop(context);
+                        listofbase.add(List_of_plan_base(plancheck: false,plantext: 'asdasd'));
+                        setState(() {
+
+                        });
+
+
+//                       Navigator.pop(context);
                       },
                       on_deny_text: 'no',
                     ),
